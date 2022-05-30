@@ -1,0 +1,39 @@
+{
+  "name": "echarts-imager",
+  "version": "0.0.1",
+  "description": "A command-line tool to generate visualization images with echarts.",
+  "type": "commonjs",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "start": "node index.mjs",
+    "package": "rm -rf dist && pkg package.json && mkdir dist/sharp && cp -r node_modules/sharp/vendor dist/sharp/vender && cp -r node_modules/sharp/build dist/sharp/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frederick-wang/echarts-imager.git"
+  },
+  "author": "Zhaoji Wang",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/frederick-wang/echarts-imager/issues"
+  },
+  "homepage": "https://github.com/frederick-wang/echarts-imager#readme",
+  "dependencies": {
+    "canvas": "^2.9.1",
+    "chalk": "4",
+    "commander": "^9.3.0",
+    "echarts": "^5.3.2",
+    "jsdom": "^19.0.0",
+    "sharp": "^0.30.5"
+  },
+  "pkg": {
+    "outputPath": "dist",
+    "targets": [
+      "node16-linux-x64"
+    ],
+    "assets": [
+      "node_modules/canvas/build/Release/*"
+    ]
+  }
+}
