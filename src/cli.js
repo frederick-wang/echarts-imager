@@ -2,11 +2,12 @@ const { stdin, argv, exit } = require('process')
 const { readFileSync } = require('fs')
 const { Command } = require('commander')
 const { error } = require('./log')
-const { version } = require('../package.json')
+const { version, name } = require('../package.json')
 const program = new Command()
 program
+  .name(name)
   .version(version)
-  .description('Ggenerate visualization images with echarts.')
+  .description('Generate visualization images with echarts.')
   .argument(
     '[input_file]',
     'the target of input Echart option (JSON format) (default: stdin)'
@@ -24,8 +25,8 @@ program
     '-f, --format, [format]',
     'the format of output chart file (default: "svg")'
   )
-  .option('-w, --width, [width]', 'the width of output chart file', '1024px')
-  .option('-h, --height, [height]', 'the height of output chart file', '768px')
+  .option('-w, --width, [width]', 'the width of output chart file', '1024')
+  .option('-h, --height, [height]', 'the height of output chart file', '768')
 
 /**
  *
@@ -92,12 +93,14 @@ const __getOptions = () =>
 /**
  * Get options from command line
  *
- * @returns {Promise<{ option: any; output: string; format: string; width: string; height: string }>}
+ * @returns {Promise<{ option: any; output: string; format: string; width: number; height: number }>}
  */
 async function getOptions() {
   const options = await __getOptions()
-  const { input, output, width, height } = options
-  let { format } = options
+  const { input, output } = options
+  let { format, width, height } = options
+  width = Number(width.replace(/[a-zA-Z]/g, ''))
+  height = Number(height.replace(/[a-zA-Z]/g, ''))
   if (!input) {
     error('Missing Echart Option')
     exit(1)

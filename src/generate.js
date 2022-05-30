@@ -33,18 +33,18 @@ async function generate() {
   global.navigator = window.navigator
   global.document = window.document
   const root = document.createElement('div')
-  root.style.cssText = `width: ${width}; height: ${width};`
+  root.style.cssText = `width: ${width}px; height: ${height}px;`
   Object.defineProperty(root, 'clientWidth', {
-    value: Number(width.replace(/[a-zA-Z]/g, ''))
+    value: width
   })
   Object.defineProperty(root, 'clientHeight', {
-    value: Number(height.replace(/[a-zA-Z]/g, ''))
+    value: height
   })
   const initOptions = {
     renderer: 'svg',
     // ssr: true,
-    width,
-    height
+    width: `${width}px`,
+    height: `${height}px`
   }
   const chart = echarts.init(root, null, initOptions)
   chart.setOption({ ...option, animation: false })
