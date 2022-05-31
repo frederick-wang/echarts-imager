@@ -1,0 +1,20 @@
+{
+  "supportedFormats": [
+    "heic",
+    "heif",
+    "avif",
+    "jpeg",
+    "jpg",
+    "png",
+    "raw",
+    "tiff",
+    "tif",
+    "webp",
+    "gif",
+    "jp2",
+    "jpx",
+    "j2k",
+    "j2c"
+  ],
+  "supportedTransparentFormats": ["png", "webp", "gif"]
+}
