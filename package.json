@@ -7,7 +7,8 @@
   "bin": "index.js",
   "scripts": {
     "start": "node index.js",
-    "package": "rm -rf dist && pkg package.json && find node_modules -name '*.node' | grep -E 'Release/[^/]+\\.node' | xargs cp -t dist"
+    "package": "rm -rf dist && pkg package.json && find node_modules -name '*.node' | grep -E 'Release/[^/]+\\.node' | xargs cp -t dist",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
